@@ -13,20 +13,20 @@ class MatriculaPage extends StatefulWidget {
 class _MatriculaPageState extends State<MatriculaPage> {
    List<Widget> tileList =[];
 
-   Matricula newMatricula = Matricula(
-    alumno : Alumno(
+   MatriculaModel newMatricula = MatriculaModel(
+    alumno : AlumnoModel(
     "Pedro", 
     "pedronoseasapo@gmail.com",
     "102445395" ),
     fecha: "20/02/2024",
     hora:  "9:10",
-    carrera: Carrera(titulo: "Ingeniero de Sistemas", duracion: "5 años "),
+    carrera: CarreraModel(titulo: "Ingeniero de Sistemas", duracion: "5 años "),
     );
 
-   List<Alumno> alumnoList = [
-    Alumno("Juanito", "juan123@gmail.com", "15975389"),
-    Alumno("Pedro", "pedro123@gmail.com", "44444454"),
-    Alumno("Anass", "ana123@gmail.com", "40585245"),
+   List<AlumnoModel> alumnoList = [
+    AlumnoModel("Juanito", "juan123@gmail.com", "15975389"),
+    AlumnoModel("Pedro", "pedro123@gmail.com", "44444454"),
+    AlumnoModel("Anass", "ana123@gmail.com", "40585245"),
   ];
 
    // generateListTile(){
@@ -46,7 +46,7 @@ class _MatriculaPageState extends State<MatriculaPage> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: (){
-          Alumno auxAlumno = Alumno("Pancrancia","notiene@hotmail.com","50450436");
+          AlumnoModel auxAlumno = AlumnoModel("Pancrancia","notiene@hotmail.com","50450436");
           alumnoList.add(auxAlumno);
          //  tileList=[];
          // generateListTile();
@@ -78,7 +78,7 @@ class _MatriculaPageState extends State<MatriculaPage> {
                   //alumnoSeleccionado.nombre = "Johan San Miguel";
                   print(alumnoList.indexOf(alumnoSeleccionado));
                   alumnoList[alumnoList.indexOf(alumnoSeleccionado)] = 
-                  Alumno(
+                  AlumnoModel(
                   "Luis Antonio",
                   "lantonia@gmail.com",
                   "405520462"
