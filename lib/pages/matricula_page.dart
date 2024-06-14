@@ -5,8 +5,14 @@ import 'package:matriculasapp/models/matricula_model.dart';
 import 'package:matriculasapp/widgets/alumno_card.dart';
 import 'package:matriculasapp/models/alumno_model.dart';
 
-class MatriculaPage extends StatelessWidget {
+class MatriculaPage extends StatefulWidget {
+  @override
+  State<MatriculaPage> createState() => _MatriculaPageState();
+}
+
+class _MatriculaPageState extends State<MatriculaPage> {
    List<Widget> tileList =[];
+
    Matricula newMatricula = Matricula(
     alumno : Alumno(
     "Pedro", 
@@ -16,6 +22,7 @@ class MatriculaPage extends StatelessWidget {
     hora:  "9:10",
     carrera: Carrera(titulo: "Ingeniero de Sistemas", duracion: "5 años "),
     );
+
    List<Alumno> alumnoList = [
     Alumno("Juanito", "juan123@gmail.com", "15975389"),
     Alumno("Pedro", "pedro123@gmail.com", "44444454"),
@@ -27,25 +34,44 @@ class MatriculaPage extends StatelessWidget {
       tileList.add(AlumnoCard(name: element.nombre, institution: "tecsup"));
     });
    }
- 
+
+   @override
+   void initState() {
+    generateListTile(); 
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    generateListTile();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          Alumno auxAlumno = Alumno("Pancrancia","notiene@hotmail.com","50450436");
+          alumnoList.add(auxAlumno);
+          generateListTile();
+          setState(() {});
+        },
+        child: Icon(Icons.add),
+        ),
       appBar: AppBar(
         title: Text("Matriculas") ,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
       ),
       body: Center(
         child: Column(
-          children: [Text("Mis Alumnos"),...tileList],
+          children: [
+            Text("Mis Alumnos"),
+            ...tileList,
+           // ...alumnoList.map(
+           //   (mandarina) => AlumnoCard(
+           //     name: mandarina.nombre, 
+           //     institution: "PUCP",
+           //     ),
+           //     )
+           //     .toList()
+            ],
           
-              // [
-              // generateListTile("Jhony Gallegos", "TECSUP 01"),
-              // AlumnoCard(
-              //  name: "Jhony", 
-              //  institution: "PUCP"
-              //  ),
-              // ],
+              
           ),
       ),
     );
