@@ -49,7 +49,8 @@ class _MatriculaPageState extends State<MatriculaPage> {
         onPressed: (){
           Alumno auxAlumno = Alumno("Pancrancia","notiene@hotmail.com","50450436");
           alumnoList.add(auxAlumno);
-          generateListTile();
+         //  tileList=[];
+         // generateListTile();
           setState(() {});
         },
         child: Icon(Icons.add),
@@ -61,14 +62,14 @@ class _MatriculaPageState extends State<MatriculaPage> {
         child: Column(
           children: [
             Text("Mis Alumnos"),
-            ...tileList,
-           // ...alumnoList.map(
-           //   (mandarina) => AlumnoCard(
-           //     name: mandarina.nombre, 
-           //     institution: "PUCP",
-           //     ),
-           //     )
-           //     .toList()
+           // ...tileList,
+             ...alumnoList.map(
+                (mandarina) => AlumnoCard(
+                name: mandarina.nombre, 
+                institution: "PUCP",
+                 ),
+                 )
+                .toList()
             ],
           
               
