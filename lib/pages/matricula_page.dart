@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:matriculasapp/models/carrera_model.dart';
 import 'package:matriculasapp/models/matricula_model.dart';
-import 'package:matriculasapp/widgets/alumno_card.dart';
+import 'package:matriculasapp/widgets/item_card.dart';
 import 'package:matriculasapp/models/alumno_model.dart';
 
 class MatriculaPage extends StatefulWidget {
@@ -29,20 +29,19 @@ class _MatriculaPageState extends State<MatriculaPage> {
     Alumno("Anass", "ana123@gmail.com", "40585245"),
   ];
 
-   generateListTile(){
-    alumnoList.forEach((element) {
-      tileList.add(AlumnoCard(name: element.nombre, institution: "tecsup"));
-    });
-   }
+   // generateListTile(){
+   //  alumnoList.forEach((element) {
+   //   tileList.add(ItemCard(name: element.nombre, institution: "tecsup"));
+   // });
+   //}
 
    @override
    void initState() {
-    generateListTile(); 
+    // generateListTile(); 
     // TODO: implement initState
     super.initState();
   }
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
@@ -64,16 +63,26 @@ class _MatriculaPageState extends State<MatriculaPage> {
             Text("Mis Alumnos"),
            // ...tileList,
              ...alumnoList.map(
-                (mandarina) => AlumnoCard(
-                name: mandarina.nombre, 
+                (alumnoSeleccionado) => ItemCard(
+                name: alumnoSeleccionado.nombre, 
                 institution: "PUCP",
+                funcionDelete: (){
+                  // alumnoList.removeLast();
+                  // alumnoList.removeAt(1);
+                  // alumnoList.removeRange(0, 2);
+                  alumnoList.remove(alumnoSeleccionado);
+                  setState(() {});
+                 },
+                  funcionEdit: (){
+                  print("Editando");
+                  setState(() {});
+                 },
+
                  ),
                  )
                 .toList()
             ],
-          
-              
-          ),
+      ),
       ),
     );
   }
