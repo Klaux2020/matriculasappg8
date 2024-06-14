@@ -75,6 +75,15 @@ class _MatriculaPageState extends State<MatriculaPage> {
                  },
                   funcionEdit: (){
                   print("Editando");
+                  //alumnoSeleccionado.nombre = "Johan San Miguel";
+                  print(alumnoList.indexOf(alumnoSeleccionado));
+                  alumnoList[alumnoList.indexOf(alumnoSeleccionado)] = 
+                  Alumno(
+                  "Luis Antonio",
+                  "lantonia@gmail.com",
+                  "405520462"
+                  );
+                  print(alumnoSeleccionado.nombre);
                   setState(() {});
                  },
 
